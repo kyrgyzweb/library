@@ -1,15 +1,21 @@
 // Create Book prototype
-function Book (title, author, pages, isRead) {
-    this.id = crypto.randomUUID();
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.isRead = isRead;
-};
+class Book {
+    constructor(title, author, pages, isRead) {
+        this.id = crypto.randomUUID();
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.isRead = isRead;
+    }
+    toggleRead() {
+        this.isRead = !this.isRead;
+    }
 
-Book.prototype.toggleRead = function() {
-    this.isRead = !this.isRead;
-};
+}
+
+// Book.prototype.toggleRead = function() {
+//     this.isRead = !this.isRead;
+// };
 
 const myLibrary = [];
 
@@ -21,8 +27,9 @@ function addBookToLibrary(title, author, pages, isRead) {
 addBookToLibrary("Prophet Muhammad (the infinite light)", "Fethullah Gülen", 270, true);
 addBookToLibrary("The Day Lasts More Than a Hundred Years", "Chyngyz Aitmatov", 299, true);
 addBookToLibrary("Jamilia", "Chyngyz Aitmatov", 299, true);
-addBookToLibrary("Fethullah Gulen: A Life of Hizmet", "Jon Pahl", 450, false)
+addBookToLibrary("Fethullah Gulen: A Life of Hizmet", "Jon Pahl", 450, false);
 
+console.log(myLibrary[0].id);
 function displayBooks(bookToDisplay = myLibrary) {
     const container = document.querySelector(".library-container");
     container.innerHTML = "";
